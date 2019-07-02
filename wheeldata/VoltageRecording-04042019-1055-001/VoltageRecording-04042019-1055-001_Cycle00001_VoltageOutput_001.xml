@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Experiment>
+  <Name>Current</Name>
+  <UpdateRate>1000</UpdateRate>
+  <UpdateDivisor>20000</UpdateDivisor>
+  <Waveform>
+    <Name>PMT Shutter</Name>
+    <Enabled>false</Enabled>
+    <AOLine>0</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-256</PlotColor>
+    <WaveformComponent_PulseTrain>
+      <Name>Waveform Component #1</Name>
+      <PulseCount>2</PulseCount>
+      <PulseWidth>100</PulseWidth>
+      <PulseSpacing>100</PulseSpacing>
+      <PulsePotentialStart>5</PulsePotentialStart>
+      <PulsePotentialDelta>0</PulsePotentialDelta>
+      <RestPotential>0</RestPotential>
+      <FirstPulseDelay>15</FirstPulseDelay>
+      <Repetitions>5</Repetitions>
+      <DelayBetweenReps>1500</DelayBetweenReps>
+    </WaveformComponent_PulseTrain>
+  </Waveform>
+  <Waveform>
+    <Name>Voltage Output 1</Name>
+    <Enabled>false</Enabled>
+    <AOLine>1</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-7876870</PlotColor>
+    <WaveformComponent_PulseTrain>
+      <Name>Waveform Component #1</Name>
+      <PulseCount>1</PulseCount>
+      <PulseWidth>10</PulseWidth>
+      <PulseSpacing>10</PulseSpacing>
+      <PulsePotentialStart>1</PulsePotentialStart>
+      <PulsePotentialDelta>0</PulsePotentialDelta>
+      <RestPotential>0</RestPotential>
+      <FirstPulseDelay>0</FirstPulseDelay>
+      <Repetitions>1</Repetitions>
+      <DelayBetweenReps>0</DelayBetweenReps>
+    </WaveformComponent_PulseTrain>
+  </Waveform>
+  <Waveform>
+    <Name>470nm LED</Name>
+    <Enabled>true</Enabled>
+    <AOLine>2</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-38476</PlotColor>
+    <WaveformComponent_PulseTrain>
+      <Name>Waveform Component #1</Name>
+      <PulseCount>1</PulseCount>
+      <PulseWidth>500</PulseWidth>
+      <PulseSpacing>10</PulseSpacing>
+      <PulsePotentialStart>2</PulsePotentialStart>
+      <PulsePotentialDelta>0</PulsePotentialDelta>
+      <RestPotential>0</RestPotential>
+      <FirstPulseDelay>10017</FirstPulseDelay>
+      <Repetitions>1</Repetitions>
+      <DelayBetweenReps>0</DelayBetweenReps>
+    </WaveformComponent_PulseTrain>
+  </Waveform>
+  <Waveform>
+    <Name>590nm LED</Name>
+    <Enabled>true</Enabled>
+    <AOLine>3</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-8586240</PlotColor>
+    <WaveformComponent_PulseTrain>
+      <Name>Waveform Component #1</Name>
+      <PulseCount>1</PulseCount>
+      <PulseWidth>500</PulseWidth>
+      <PulseSpacing>10</PulseSpacing>
+      <PulsePotentialStart>3</PulsePotentialStart>
+      <PulsePotentialDelta>0</PulsePotentialDelta>
+      <RestPotential>0</RestPotential>
+      <FirstPulseDelay>10517</FirstPulseDelay>
+      <Repetitions>1</Repetitions>
+      <DelayBetweenReps>0</DelayBetweenReps>
+    </WaveformComponent_PulseTrain>
+  </Waveform>
+  <Waveform>
+    <Name>PMT Shutter</Name>
+    <Enabled>true</Enabled>
+    <AOLine>4</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-16776961</PlotColor>
+    <WaveformComponent_PulseTrain>
+      <Name>Waveform Component #1</Name>
+      <PulseCount>1</PulseCount>
+      <PulseWidth>1018</PulseWidth>
+      <PulseSpacing>10</PulseSpacing>
+      <PulsePotentialStart>5</PulsePotentialStart>
+      <PulsePotentialDelta>0</PulsePotentialDelta>
+      <RestPotential>0</RestPotential>
+      <FirstPulseDelay>10000</FirstPulseDelay>
+      <Repetitions>1</Repetitions>
+      <DelayBetweenReps>0</DelayBetweenReps>
+    </WaveformComponent_PulseTrain>
+  </Waveform>
+  <Waveform>
+    <Name>Uncaging X Galvo</Name>
+    <Enabled>false</Enabled>
+    <AOLine>5</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-65536</PlotColor>
+  </Waveform>
+  <Waveform>
+    <Name>Pockels B</Name>
+    <Enabled>false</Enabled>
+    <AOLine>6</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-23296</PlotColor>
+  </Waveform>
+  <Waveform>
+    <Name>Uncaging Y Galvo</Name>
+    <Enabled>false</Enabled>
+    <AOLine>7</AOLine>
+    <Units>V</Units>
+    <UnitScaleFactor>1</UnitScaleFactor>
+    <UnitVoltageOffset>0</UnitVoltageOffset>
+    <UnitScaleOffset>0</UnitScaleOffset>
+    <PlotColor>-7077677</PlotColor>
+  </Waveform>
+</Experiment>

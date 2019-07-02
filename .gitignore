@@ -21,3 +21,7 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+
+# folders and files by Sang
+./test_code
+./ref

@@ -1,0 +1,11 @@
+DEBUG:root:DIO_interrupt_counter:0
+DEBUG:root:DIO_interrupt_counter:0
+DEBUG:root:DIO_interrupt_counter:0
+DEBUG:root:DIO_interrupt_counter:0
+type:<class 'int'>,value:0
+DEBUG:root:DIO_interrupt_counter:1
+type:<class 'int'>,value:1
+DEBUG:root:DIO_interrupt_counter:2
+type:<class 'int'>,value:2
+DEBUG:root:DIO_interrupt_counter:3
+type:<class 'int'>,value:3

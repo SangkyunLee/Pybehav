@@ -1,0 +1,803 @@
+
+<!-- saved from url=(0041)https://www.ftdichip.com/Drivers/D2XX.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>D2XX Direct Drivers</title>
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="reply-to" content="webmaster@ftdichip.com">
+<meta name="Rating" content="General">
+<meta name="Language" content="en">
+<meta name="distribution" content="Global">
+<meta name="Copyright" content="© Future Technology Devices International Ltd. 2011">
+<meta name="Classification" content="Hardware">
+<meta name="keywords" content="USB RS232, USB Serial, USB Legacy, USB drivers, USB devices, USB dock, USB hub, FT8U232AM, FTDI, FT8U245AM, FT8U100AX, USB chips, USB UART, USB FIFO, USB Semiconductors, ASIC design, USB product design">
+<meta name="description" content="USB RS232 - FTDI designs and supplies USB semiconductor devices with Legacy support including royalty-free drivers. Application areas include USB RS232, ( USB Serial ), USB Parallel, USB Docking Stations, and upgrades of Legacy designs to USB.">
+
+
+<style fprolloverstyle="">A:hover {color: #FF0000}
+</style>
+<style type="text/css">
+.style1 {
+	color: #0000FF; text-decoration:none
+}
+.style3 {
+	color: #FF0000;
+}
+.style23 {
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+}
+.style22 {
+	border-left: medium none #C0C0C0;
+	border-right: medium none #C0C0C0;
+	border-top: medium none #C0C0C0;
+	border-bottom: thin solid #C0C0C0;
+	font-weight: bold;
+	text-align: center;
+}
+.style24 {
+	border-left: medium none #C0C0C0;
+	border-right: thin solid #C0C0C0;
+	border-top: medium none #C0C0C0;
+	border-bottom: thin solid #C0C0C0;
+	text-align: center;
+	font-weight: bold;
+}
+.style16 {
+	border: thin solid #C0C0C0;
+	font-weight: bold;
+	text-align: center;
+}
+.style25 {
+	border-left: thin solid #C0C0C0;
+	border-right: medium none #C0C0C0;
+	border-top: medium none #C0C0C0;
+	border-bottom: thin solid #C0C0C0;
+	text-align: center;
+	font-weight: bold;
+}
+.style29 {
+	border: thin solid #C0C0C0;
+	text-align: center;
+}
+.style30 {
+	color: #0000FF;
+}
+.style31 {
+	border: thin solid #C0C0C0;
+	text-align: center;
+	color: #0000FF;
+}
+.style32 {
+	border: thin solid #C0C0C0;
+	text-align: center;
+	font-size: x-small;
+}
+.auto-style1 {
+	border-width: 0px;
+}
+</style>
+		<script type="text/javascript" async="" src="./D2XX Direct Drivers_files/ga.js.download"></script><script type="text/javascript" src="./D2XX Direct Drivers_files/google_script.js.download"></script>
+
+</head>
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#FFFFFF" vlink="#FFFFFF" text="#000080">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr> 
+    <td colspan="2" background="./D2XX Direct Drivers_files/ftdi_4.gif">
+    <a href="https://www.ftdichip.com/"><img src="./D2XX Direct Drivers_files/ftdi_1.gif" width="175" height="78" border="0"></a><img src="./D2XX Direct Drivers_files/ftdi_2.gif" width="376" height="78"><img src="./D2XX Direct Drivers_files/ftdi_3.gif" width="94" height="78"></td>
+  </tr>
+  <tr valign="top"> 
+    <td background="./D2XX Direct Drivers_files/ftdi_5.gif" valign="top">
+    <img src="./D2XX Direct Drivers_files/ftdi_6.gif" width="551" height="42"></td>
+    <td background="./D2XX Direct Drivers_files/ftdi_5.gif" valign="top" align="right">&nbsp;
+    </td>
+  </tr>
+</tbody></table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr valign="top"> 
+    <td width="1%"> 
+      <table width="175" border="0" cellspacing="0" cellpadding="0" bgcolor="#6E8BB1" style="text-align: left; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0">
+        <tbody><tr>
+    <td valign="top" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial"><span style="text-decoration: none">
+    <a href="https://www.ftdichip.com/index.html"><span style="text-decoration: none">Home</span></a></span></font></span></td>
+        </tr>
+        
+        <tr>
+    <td valign="top" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial"><span style="text-decoration: none">
+    <a href="https://www.ftdichip.com/FTProducts.htm"><span style="text-decoration: none">Products</span></a></span></font></span></td>
+        </tr>
+        <tr>
+    <td valign="top" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial"><span style="text-decoration: none">
+    <a href="https://www.ftdichip.com/FTDrivers.htm"><span style="text-decoration: none">Drivers</span></a></span></font></span></td>
+        </tr>
+        <tr>
+    <td bgcolor="#819EC4" valign="top" style="text-align: left; text-indent: 30; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial" size="2"><a href="https://www.ftdichip.com/Drivers/VCP.htm">
+    <span style="text-decoration: none">VCP Drivers</span></a></font></span></td>
+        </tr>
+        <tr>
+    <td bgcolor="#819EC4" valign="top" style="text-align: left; text-indent: 30; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial" size="2"><a href="https://www.ftdichip.com/Drivers/D2XX.htm">
+    <span style="text-decoration: none">D2XX Drivers</span></a></font></span></td>
+        </tr>
+        <tr>
+   <td bgcolor="#819EC4" valign="top" style="text-align: left; text-indent: 30; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial" size="2"><a href="https://www.ftdichip.com/Drivers/D3XX.htm">
+    <span style="text-decoration: none">D3XX Drivers</span></a></font></span></td>
+        </tr>
+
+	
+        <tr>
+    <td valign="top" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial"><span style="text-decoration: none">
+    <a href="https://www.ftdichip.com/FTFirmware.htm"><span style="text-decoration: none">Firmware</span></a></span></font></span></td>
+        </tr>
+        <tr>
+    <td valign="top" style="text-indent: 20; text-align: left; word-spacing: 0; line-height: 150%; margin-left: 10; margin-right: 0; margin-top: 0; margin-bottom: 0" height="25"><font face="Arial">
+    <a href="https://www.ftdichip.com/FTSupport.htm">
+    <span style="text-decoration: none; font-weight: 700">Support</span></a></font></td>
+        </tr><tr>
+    <td valign="top" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial"><span style="text-decoration: none">
+    <a href="https://www.ftdichip.com/Android.htm"><span style="text-decoration: none">Android</span></a></span></font></span></td>
+        </tr>
+		<tr>
+    <td valign="top" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial"><span style="text-decoration: none">
+    <a href="https://www.ftdichip.com/EVE.htm"><span style="text-decoration: none">EVE</span></a></span></font></span></td>
+        </tr>
+		
+		<tr>
+    <td valign="top" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left:10; margin-right:0; margin-top:0; margin-bottom:0" height="25">
+    <span style="font-weight: 700">
+    <font face="Arial"><span style="text-decoration: none">
+    <a href="https://www.ftdichip.com/MCU.html"><span style="text-decoration: none">MCU</span></a></span></font></span></td>
+        </tr>
+        <tr>
+    <td valign="top" style="text-indent: 20; text-align: left; word-spacing: 0; line-height: 150%; margin-left: 10; margin-right: 0; margin-top: 0; margin-bottom: 0" height="25"><font face="Arial">
+    <span style="text-decoration: none; font-weight: 700">
+    <a href="https://www.ftdichip.com/FTSalesNetwork.htm"><span style="text-decoration: none">Sales 
+    Network</span></a></span></font></td>
+        </tr>
+        <tr>
+    <td valign="top" style="text-indent: 20; text-align: left; word-spacing: 0; line-height: 150%; margin-left: 10; margin-right: 0; margin-top: 0; margin-bottom: 0" height="25">
+    <a target="_blank" href="https://www.ftdichip.com/PrivacyNotice.htm">
+    <span style="text-decoration: none; font-weight: 700"><font face="Arial">Web 
+    Shop</font></span></a></td>
+        </tr>
+        <tr>
+    <td valign="top" style="text-indent: 20; text-align: left; word-spacing: 0; line-height: 150%; margin-left: 10; margin-right: 0; margin-top: 0; margin-bottom: 0" height="25">
+    <b><font face="Arial"><a href="https://www.ftdichip.com/FTNewsLetter.htm">
+    <span style="text-decoration: none">Newsletter</span></a></font></b></td>
+        </tr>
+        <tr>
+    <td valign="top" style="text-indent: 20; text-align: left; word-spacing: 0; line-height: 150%; margin-left: 10; margin-right: 0; margin-top: 0; margin-bottom: 0" height="25"><font face="Arial">
+    <a href="https://www.ftdichip.com/FTCorporate.htm">
+    <span style="text-decoration: none; font-weight: 700">Corporate</span></a></font></td>
+        </tr>
+        <tr>
+    <td valign="top" style="text-indent: 20; text-align: left; word-spacing: 0; line-height: 150%; margin-left: 10; margin-right: 0; margin-top: 0; margin-bottom: 0" height="25"><font face="Arial">
+    <a href="https://www.ftdichip.com/FTContact.htm">
+    <span style="text-decoration: none; font-weight: 700">Contact Us</span></a></font></td>
+        </tr>
+        <tr valign="top">
+          <td width="1%" height="2" style="text-align: left; text-indent: 20; word-spacing: 0; line-height: 150%; margin-left: 10; margin-right: 0; margin-top: 0; margin-bottom: 0">
+            </td>
+        </tr>
+        <tr>
+          <td><img src="./D2XX Direct Drivers_files/ftdi_21.gif" width="175" height="29"></td>
+        </tr>
+                
+      </tbody></table>
+      <p style="font-family: Arial; font-size: 10pt; text-align: center; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; font-weight: 700;">&nbsp;
+			  </p>
+			  
+<form action="https://www.ftdichip.com/searchresults.html" id="cse-search-box">
+  <div style="text-align: center; vertical-align:middle">
+    <input type="hidden" name="cx" value="014628871466428152281:vv2ecvdr1ky">
+    <input type="hidden" name="cof" value="FORID:10">
+    <input type="hidden" name="ie" value="UTF-8">
+    <input type="text" name="q" size="16" placeholder="Custom Search" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px;">&nbsp;
+	<input type="image" name="sa" src="./D2XX Direct Drivers_files/searchicon.gif" height="25" width="25" alt="Search">
+  	<br><br>
+  </div>
+<input name="siteurl" type="hidden" value="www.ftdichip.com/Drivers/D2XX.htm"><input name="ref" type="hidden" value="www.ftdichip.com/Drivers/D3XX.htm"><input name="ss" type="hidden" value=""></form>
+<script type="text/javascript" src="./D2XX Direct Drivers_files/f.txt"></script>
+	  <p style="font-family: Arial; font-size: 10pt; text-align: center; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; font-weight: 700;">
+	  &nbsp;</p>
+
+	 <p style="font-family: Arial; font-size: 10pt; text-align: center; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; font-weight: 700;">
+	  <a href="https://www.ftdicommunity.com/" target="_blank">
+	  <img src="./D2XX Direct Drivers_files/Community-Icon.png" width="120" class="auto-style1"></a></p>
+
+
+<!--<p style="font-family: Arial; font-size: 10pt; text-align: center; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; font-weight: 700;">
+	 Win a Nexus 9<br>
+	   <a class="style1" href="https://www.surveymonkey.com/r/FTDI_Survey_2015"><strong>Click here to Enter</strong></a></p>
+	  <p style="font-family: Arial; font-size: 10pt; text-align: center; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; font-weight: 700;"><a href="https://www.surveymonkey.com/r/FTDI_Survey_2015">
+	  <strong>
+ <img src="/Images/Nexus9front.png" width="100"></strong></a><a class="style1" href="https://www.surveymonkey.com/r/FTDI_CHIP_SURVEY_2015"><strong>
+	  </strong></a></p>
+	  <p style="font-family: Arial; font-size: 10pt; text-align: center; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; font-weight: 700;"><br>
+	  </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+
+	  
+	  
+    </td>
+    <td valign="top" width="99%">
+<!-- Start -->
+<div align="left">
+<table width="100%" border="0" cellspacing="6" cellpadding="0" height="623" style="text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; text-align:left">
+ 
+ <!--NirO banner for KickStarter Project - commented on 7 Jan 2016--> 
+  <!--<tr> 
+    <a href="https://www.kickstarter.com/projects/1218034479/nero-an-energy-efficient-arduino-uno-compatible-de" target="_blank"><img border="0" src="../Images/NerO/NerO Web Banner.gif"></a>
+  </tr>-->
+  <!--NirO banner for KickStarter Project - commented on 7 Jan 2016--> 
+  
+  <!--EW2016 banner -->  
+  <!--<tr> 
+    <center><a href="/ew2016.htm" target="_blank"><img border="0" src="../Images/ew2016banner.jpg"></a></center>
+  </tr>-->
+  <!--EW2016 banner -->  
+    <!--<tr> 
+    <a href="../FT-XPromoRegistration.htm">
+		   <center>
+    <img src="../Images/EWBanner.jpg"/></center></a>
+    </tr>  !-->
+  
+  <tbody><tr> 
+	<td height="23">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	    <tbody><tr> 
+		  <td width="1%"><font face="Arial">
+          <img src="./D2XX Direct Drivers_files/pointer_b.gif" border="0" width="22" height="22"></font></td>
+		  <td id="title" bgcolor="#6E8BB1"> <b>
+          <font face="Arial" color="#FFFFFF">&nbsp; D2XX Direct Drivers</font></b></td>
+		</tr>
+	  </tbody></table>	
+	</td>
+  </tr>
+  <tr>
+	<td height="34" align="left" valign="top" style="font-family: Arial; font-size: 10pt; text-align: left; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0">
+		<p style="text-align: justify; margin-top: 0; margin-bottom: 0">
+        <font face="Arial" size="2">This page contains the D2XX drivers 
+        currently available for FTDI devices.&nbsp; 
+        </font>
+        </p><p style="text-align: justify; margin-top: 0; margin-bottom: 0">
+        &nbsp;</p><p style="text-align: justify; margin-top: 0; margin-bottom: 0">
+        For Virtual COM Port (VCP) drivers, please click <a href="https://www.ftdichip.com/Drivers/VCP.htm">
+        <font color="#0000FF">here</font></a>.</p><p style="text-align: justify; margin-top: 0; margin-bottom: 0">
+        &nbsp;</p><p style="margin-top: 0; margin-bottom: 0">Installation guides are available from the
+        <a href="https://www.ftdichip.com/Support/Documents/InstallGuides.htm"><font color="#0000FF">
+        Installation Guides</font></a> page of the <a href="https://www.ftdichip.com/Support/FTDocuments.htm">
+        <font color="#0000FF">Documents</font></a> section of this site for 
+        selected operating systems.</p>
+        <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+        <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+        </td>
+  </tr>
+   
+  <tr>
+	<td height="23">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	    <tbody><tr> 
+		  <td width="1%"><font face="Arial">
+          <img src="./D2XX Direct Drivers_files/pointer_b.gif" border="0" width="22" height="22"></font></td>
+		  <td id="title1" bgcolor="#6E8BB1"> <b>
+          <font face="Arial" color="#FFFFFF">&nbsp; D2XX Drivers</font></b></td>
+		</tr>
+	  </tbody></table>	
+	</td>
+  </tr>
+   
+  <tr> 
+	<td height="50" align="left" valign="top" style="font-family: Arial; font-size: 10pt; text-align: left; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0">
+<div align="left">
+<table width="100%" border="0" cellspacing="6" cellpadding="0" height="1018" style="text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0; text-align:left; border-left-width:0px; border-right-width:0px; border-bottom-width:0px">
+     
+  <tbody><tr> 
+	<td align="left" valign="top" style="font-family: Arial; font-size: 10pt; text-align: left; text-indent: 0; word-spacing: 0; margin: 0; ">
+		D2XX drivers allow direct access to the USB device through a DLL.&nbsp; 
+		Application software can access the USB device through a series of DLL 
+		function calls.&nbsp; The functions available are listed in the 
+        <a href="https://www.ftdichip.com/Support/Documents/ProgramGuides/D2XX_Programmer&#39;s_Guide(FT_000071).pdf" target="_blank"><font color="#0000FF">
+		D2XX Programmer's Guide</font></a> document which is available from the <font color="#0000FF">
+        <a href="https://www.ftdichip.com/Support/FTDocuments.htm"><font color="#0000FF">Documents</font></a></font> 
+        section of this site.&nbsp; 
+        <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+        <p style="margin-top: 0; margin-bottom: 0">Programming examples using 
+		the D2XX drivers and DLL can be found in the <a href="https://www.ftdichip.com/Support/FTSwExamples.htm">
+        <font color="#0000FF">Projects</font></a> section of this site. </p>
+        <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+        <span lang="EN-GB"><font size="2">
+		<p class="style3">This software is provided by Future Technology Devices 
+		International Limited ``as is'' and any express or implied warranties, 
+		including, but not limited to, the implied warranties of merchantability 
+		and fitness for a particular purpose are disclaimed. In no event shall 
+		future technology devices international limited be liable for any 
+		direct, indirect, incidental, special, exemplary, or consequential 
+		damages (including, but not limited to, procurement of substitute goods 
+		or services; loss of use, data, or profits; or business interruption) 
+		however caused and on any theory of liability, whether in contract, 
+		strict liability, or tort (including negligence or otherwise) arising in 
+		any way out of the use of this software, even if advised of the 
+		possibility of such damage. <br>FTDI drivers may be used only in 
+		conjunction with products based on FTDI parts.<br>FTDI drivers may be 
+		distributed in any form as long as license information is not modified.<br>
+		If a custom vendor ID and/or product ID or description string are used, 
+		it is the responsibility of the product manufacturer to maintain any 
+		changes and subsequent WHCK re-certification as a result of making these 
+		changes.<br>
+		For more detail on FTDI Chip Driver licence terms, please <a href="https://www.ftdichip.com/Drivers/FTDriverLicenceTermsSummary.htm">
+        <font color="#0000FF">click here.</font></a></p>
+		<p>&nbsp;</p>
+		<p>Currently Supported D2XX Drivers:</p>
+		<span lang="EN-GB">
+				</span><span lang="EN-GB">
+				</span><table align="center" cellpadding="4" cellspacing="0" style="font-family: Arial; font-size: 10pt" width="100%" class="style23">
+			<tbody><tr>
+				<td class="style22" style="width: 158px">&nbsp;</td>
+				<td class="style24" style="width: 104px">&nbsp;</td>
+				<td class="style16" colspan="6">Processor Architecture</td>
+				<td class="style25">&nbsp;</td>
+			</tr>
+			<tr>
+			  <td class="style16" style="width: 158px">Operating System</td>
+			  <td class="style16" style="width: 104px">Release Date</td>
+			  <td class="style16" style="width: 154px">x86 (32-bit)</td>
+			  <td class="style16" style="width: 151px">x64 (64-bit)</td>
+			  <td class="style16" style="width: 467px">ARM</td>
+			  <td class="style16" style="width: 209px">MIPS</td>
+			  <td class="style16">SH4</td>
+		
+              <td class="style16" style="width: 548px">Comments</td>
+			</tr>
+			<tr>
+				<td class="style29" style="height: 48px; width: 158px;">Windows*</td>
+				<td class="style29" style="height: 48px; width: 104px;">201<span lang="en-sg">7</span>-<span lang="en-sg">0</span>8-30</td>
+				<td class="style29" style="height: 48px; width: 154px;">
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%20v2.12.28%20WHQL%20Certified.zip">2.12.28</a></td>
+        <td class="style29" style="height: 48px; width: 151px;">
+        <span lang="EN-GB"><font size="2">
+				<a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%20v2.12.28%20WHQL%20Certified.zip">2.12.28</a></font></span></td>
+				   <td class="style29" style="height: 48px; width: 467px;">-</td>
+				<td class="style29" style="height: 48px; width: 209px;">-</td>
+				<td class="style29" style="height: 48px; width: 90px;">-</td>
+				<td class="style29" style="height: 48px; width: 548px;">WHQL Certified.  Includes VCP and D2XX.<br>
+			      Available as a 
+				<a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM21228_Setup.zip">setup executable</a><br>
+                  Please read the 
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%202%2012%2028%20Release%20Info.rtf" target="_blank">Release Notes</a>
+                  and
+                  <a class="style1" href="https://www.ftdichip.com/Support/Documents/InstallGuides.htm">Installation Guides</a>.
+                </td>
+        	</tr>
+			<tr>
+			  <td class="style29" style="width: 158px">Windows RT</td>
+			  <td class="style29" style="width: 104px">2014-07-04</td>
+			  <td class="style29" style="width: 154px"><p>
+			    <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Win%20RT/D2xx%20WinRT%201.0.2.zip">1.0.2</a></p></td>
+			  <td class="style29" style="width: 151px"><p>-</p></td>
+			  <td class="style29" style="width: 467px"><p>
+			    <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Win%20RT/D2xx%20WinRT%201.0.2.zip">1.0.2</a></p></td>
+			  
+			  <td class="style29" style="width: 209px"><p>-</p></td>
+			  <td class="style29" style="width: 90px"><p>-</p></td>
+              <td class="style29" style="width: 548px">A guide to support the driver (AN_271) is available 
+                <a class="style1" href="https://www.ftdichip.com/Support/Documents/InstallGuides/AN_271%20D2xx%20WinRT%20Guide.pdf">here</a><p></p></td>
+			</tr>
+			<tr>
+				<td class="style29" style="width: 158px">Linux</td>
+				<td class="style29" style="width: 104px">201<span lang="en-sg">8</span>-0<span lang="en-sg">6</span>-22</td>
+				<td class="style29" style="width: 154px"><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.4.8.gz">1.4.8</a>
+
+		</td>
+				                 <td class="style29" style="width: 151px"><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-x86_64-1.4.8.gz">
+								 1.4.<span lang="en-sg">8</span> </a></td>
+
+				<td class="style29" style="width: 467px">
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v5-sf-1.4.8.gz">1.4.8 ARMv5 soft-float</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-uclibc-1.4.8.gz">1.4.8 ARMv5 soft-float uClibc</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v6-hf-1.4.8.gz">1.4.8<span lang="en-sg"></span> ARMv6 hard-float</a> (suits Raspberry Pi)</p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v7-hf-1.4.8.gz">1.4.8 ARMv7 hard-float</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v8-1.4.8.gz">1.4.8 ARMv8 hard-float</a></p>
+
+                  </td>
+				<td class="style29" style="width: 209px">
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-mips-eglibc-sf-1.4.8.gz">1.4.8 MIPS32 soft-float</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-mips-eglibc-hf-1.4.8.gz">1.4.8 MIPS32 hard-float</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-mips-openwrt-uclibc-1.4.8.gz">1.4.8 MIPS openwrt-uclibc</a></p>
+
+                  </td>
+				
+				<td class="style29"></td>
+				<td class="style29" style="width: 548px">
+                  If unsure which ARM version to use, compare the output of <tt>readelf</tt> 
+                  and <tt>file</tt> commands on a system binary with the content of
+                  release/build/libftd2xx.txt in each package.<br>
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/ReadMe-linux.txt" target="_blank">ReadMe</a><br>
+        <span lang="EN-GB"><font size="2">
+	  <img height="33" src="./D2XX Direct Drivers_files/New-button.png">
+				<a class="style1" href="https://youtu.be/jynlynjOOek" target="_blank">Video Install Guide</a></font></span></td>
+			</tr>
+			<tr>
+				<td class="style29" style="width: 158px">Mac OS X<br>10.4&nbsp;Tiger or later</td>
+				<td class="style29" style="width: 104px">201<span lang="en-sg">7</span>-<span lang="en-sg">03</span>-03</td>
+				<td class="style29" style="width: 154px">-<span lang="EN-GB"></span></td>
+        <td class="style29" style="width: 151px"><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/MacOSX/D2XX1.4.4.dmg">1.4.4</a></td>
+				 <td class="style29" style="width: 467px">-</td>
+				<td class="style29" style="width: 209px">-</td>
+				<td class="style29" style="width: 90px">-</td>
+
+				<td class="style29" style="width: 548px">If using a device with standard FTDI vendor
+                                    and product identifiers, install 
+                                    <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/MacOSX/D2xxHelper_v2.0.0.pkg">D2xxHelper</a>
+                                    to prevent OS&nbsp;X&nbsp;10.11 (El Capitan) 
+                                    claiming the device as a serial port (locking
+                                    out D2XX programs).<br>
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/MacOSX/ReadMe.rtf" target="_blank">ReadMe</a><br>
+	  <img height="33" src="./D2XX Direct Drivers_files/New-button.png">
+				<a class="style1" href="https://youtu.be/Ir2PVz1870E" target="_blank">Video Install Guide</a></td>
+			</tr>
+			<tr>
+				<td class="style29" style="width: 158px">Windows CE 4.2-5.2**</td>
+				<td class="style29" style="width: 104px">2015-11-03</td>
+				<td class="style29" style="width: 154px">
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE4252/x86D2XXDriver.zip">1.0.1.12</a></td>
+				<td class="style29" style="width: 151px">-</td>
+						<td class="style29" style="width: 467px">
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE4252/ARMv4D2XXDriver.zip">1.0.1.12</a></td>
+				<td class="style29" style="width: 209px">
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE4252/MIPSIID2XXDriver.zip">1.0.1.6 MIPS&nbsp;II</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE4252/MIPSIVD2XXDriver.zip">1.0.1.6 MIPS&nbsp;IV</a></p>
+                  </td>
+				<td class="style29">
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE4252/SH4D2XXDriver.zip">1.0.1.6</a></td>
+				  
+				<td class="style29" style="width: 548px">-</td>
+			</tr>
+			<tr>
+				<td class="style29" style="height: 84px; width: 158px;">Windows CE 6.0/7.0</td>
+				<td class="style29" style="height: 84px; width: 104px;">2015-11-03</td>
+								<td class="style29" style="width: 80px; height: 84px;">
+		          <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE60/x86D2XXDriver60.zip">1.0.1.12</a></p>
+				  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE60/WinCE%206.0%20x86%20d2xx.zip">CE 6.0 CAT</a></p>
+				  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE70/WinCE%207.0%20x86%20d2xx.zip">CE 7.0 CAT</a></p>
+                  </td> 
+                  <td class="style29" style="width: 151px"><p>-</p></td>
+
+				<td class="style29" style="height: 84px; width: 467px;">
+		          <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE60/ARMv4D2XXDriver60.zip">1.0.1.12</a></p>
+				  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE60/WinCE%206.0%20ARM%20d2xx.zip">CE 6.0 CAT</a></p>
+				  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE70/WinCE%207.0%20ARM%20d2xx.zip">CE 7.0 CAT</a></p></td>
+				<td class="style29" style="height: 84px; width: 209px;">
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE60/MIPSIID2XXDriver60.zip">1.0.1.6 MIPS&nbsp;II</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE60/MIPSIVD2XXDriver60.zip">1.0.1.6 MIPS&nbsp;IV</a></p>
+                  </td>
+				<td class="style29" style="height: 84px">
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/CE60/SH4D2XXDriver60.zip">1.0.1.6</a></td>
+                  
+				<td class="style29" style="width: 548px">For use of the CAT files supplied for ARM and x86 builds refer to 
+                  <a class="style1" href="https://www.ftdichip.com/Support/Documents/InstallGuides/AN_319_Windows_CE_Driver_Catalog_Item_Usage.pdf" target="_blank">AN_319</a></td>
+			</tr>
+			<tr>
+                <td class="style29" style="height: 84px; width: 158px;">Windows CE 2013</td>
+				<td class="style29" style="height: 84px; width: 104px;">&nbsp;</td>
+				<td class="style29" style="width: 154px; height: 84px;">
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/WinCE2013/x86D2XXDriver2013.zip">1.0.0</a></td> 
+				   <td class="style29" style="width: 151px">-</td>
+				<td class="style29" style="height: 84px; width: 467px;">
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/WinCE/WinCE2013/ARMD2XXDriver2013.zip">1.0.0</a></td>
+				<td class="style29" style="height: 84px; width: 209px;">&nbsp;</td>
+				<td class="style29" style="height: 84px">&nbsp;</td>
+			
+				<td class="style29" style="width: 548px">D2xx Driver Support for WinCE2013</td>
+            </tr>
+			<tr>
+				<td class="style29" style="width: 158px">Android (Java D2XX)</td>
+				<td class="style29" style="width: 104px">2016-10-28</td>
+				<td class="style29" style="width: 154px">&nbsp;</td>
+				
+				<td class="style29" style="width: 151px">-</td>
+				<td class="style29" style="width: 467px">
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Android_Java_D2xx_2.06.zip" target="_blank">Java Driver</a><br>
+                  2.06.00.000</td>
+				<td class="style29" style="width: 209px">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+				
+				<td class="style29" style="width: 548px"><br>
+                  Rooting of Android device is not required.<br>
+                  Refer to technical note&nbsp;<a class="style1" href="https://www.ftdichip.com/Support/Documents/TechnicalNotes/TN_147_Java_D2xx_for_Android.pdf" target="_blank">
+				  TN_147</a>. <br>
+				  Refer to
+				  <a class="style1" href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_357%20Android%20Java%20D2xx%20Demo%20Application%20for%20FT4222.pdf" target="_blank">AN_357</a> for FT4222H-specific help.</td> 
+			</tr>
+			
+		</tbody></table>
+
+		</font></span><font size="2">
+
+		</font>
+        <span lang="EN-GB">
+        <span lang="EN-GB">
+        <span lang="EN-GB">
+        <span lang="EN-GB">
+        <span lang="EN-GB">
+        <br>
+		*Includes the following version of of the Windows operating system: 
+		Windows 7, Windows Server 2008 R2 and Windows 8, 8.1, Windows server 
+		2012 R2, Windows Server 2016 and Windows 10. Also, as Windows 8 RT is a closed system not allowing for 3rd 
+		party driver installation our Windows 8 driver will not support this 
+		variant of the OS. You must use the Windows RT build for this platform.<br>
+		<br><span lang="EN-GB"><font size="2">
+		**includes the following versions of Windows CE 4.2-5.2 based operating 
+		systems: Windows Mobile 2003, Windows Mobile 2003 SE, Windows Mobile 5, 
+		Windows Mobile 6, Windows Mobile 6.1 ,Windows Mobile 6.5</font></span><br>
+		<br>
+		NOTE: Microsoft have ended support for certifying XP and VISTA through their WHCK test program. As such current builds will still work on XP and VISTA but are not Microsoft certified.
+		<br>
+		<br>
+		<br><br>
+        <!-- <span LANG="EN-GB"><font SIZE="2">
+		**includes the following versions of Windows CE 4.2-5.2 based operating 
+		systems: Windows Mobile 2003, Windows Mobile 2003 SE, Windows Mobile 5, 
+		Windows Mobile 6, Windows Mobile 6.1 ,Windows Mobile 6.5</font></span> -->
+		<br>
+		<b>No Longer Supported:</b><br>
+		<span lang="EN-GB">
+				</span><span lang="EN-GB">
+
+			</span><table align="center" cellpadding="4" cellspacing="0" style="font-family: Arial; font-size: 10pt" width="100%" class="style23">
+			<tbody><tr>
+				<td class="style22">&nbsp;</td>
+				<td class="style24">&nbsp;</td>
+				<td class="style16" colspan="8">Processor Architecture</td>
+				<td class="style25">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="style16">Operating System</td>
+				<td class="style16">Release Date</td>
+				<td class="style16">x86 (32-bit)</td>
+				<td class="style16">x64 (64-bit)</td>
+				<td class="style16">PPC</td>
+				<td class="style16" style="width: 181px">ARM</td>
+				<td class="style16" style="width: 145px">MIPS</td>
+                <td class="style16">MIPSII</td>
+				<td class="style16">MIPSIV</td>
+				<td class="style16">SH4</td>
+				<td class="style16">Comments</td>
+			</tr>
+			<tr>
+				<td class="style29">Previous Windows Release</td>
+				<td class="style29">
+        <span lang="EN-GB"><font size="2">
+				201<span lang="en-sg">7</span>-<span lang="en-sg">03</span>-10</font></span></td>
+				<td class="style29">
+        <span lang="EN-GB"><font size="2">
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%20v2.12.26%20WHQL%20Certified.zip">2.12.26</a></font></span></td>
+				<td class="style29">
+        <span lang="EN-GB"><font size="2">
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%20v2.12.26%20WHQL%20Certified.zip">2.12.26</a></font></span></td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29" style="width: 181px">&nbsp;</td>
+				<td class="style29" style="width: 145px">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+                <td class="style29">
+        <span lang="EN-GB"><font size="2">
+				  WHQL Certified.  Includes VCP and D2XX.<br>
+			      Available as a 
+				<a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM21226_Setup.zip">setup executable</a><br>
+                  Please read the 
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%202%2012%2026%20Release%20Info.rtf" target="_blank">Release Notes</a>
+                  and
+                  <a class="style1" href="https://www.ftdichip.com/Support/Documents/InstallGuides.htm">Installation Guides</a>.</font></span></td>
+			</tr>
+			
+			<tr>
+				<td class="style29">Windows XP, Vista, Server&nbsp;2003, Server&nbsp;2008</td>
+				<td class="style29">2012-04-13</td>
+				<td class="style29"><a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%202.08.24%20WHQL%20Certified.zip">2.08.24</a></td>
+				<td class="style29"><a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%202.08.24%20WHQL%20Certified.zip">2.08.24</a></td>
+				<td class="style29">-</td>
+				<td class="style29" style="width: 181px">-</td>
+				<td class="style29" style="width: 145px">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+
+				<td class="style29">
+				  WHQL<span lang="en-sg"> </span>Certified<br>
+				  Also available as a 
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM20824_Setup.exe">setup executable</a><br>
+				  <a class="style1" href="https://www.ftdichip.com/Drivers/CDM/CDM%202%2008%2024%20Release%20Info.rtf">Release notes</a><br>
+                  This is FTDI's final release before Microsoft stopped certifying drivers for these versions of Windows.</td>
+			</tr>
+			
+			<tr>
+				<td class="style29">Windows 2000</td>
+				<td class="style29">2009-10-22</td>
+				<td class="style29">
+				<a class="style1" href="https://www.ftdichip.com/Drivers/CDM/Win2k/CDM%202.06.00%20WHQL%20Certified.zip">2.06.00</a></td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29" style="width: 181px">-</td>
+				<td class="style29" style="width: 145px">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+
+				<td class="style29">
+				WHQL Certified<br>
+				Available as
+				<span class="style30">
+				<a href="https://www.ftdichip.com/Drivers/CDM/Win2k/CDM20600.exe"><span class="style1">setup executable</span></a></span> <br>
+				<span class="style30">
+				<a href="https://www.ftdichip.com/Drivers/CDM/Win2k/CDM%202%2006%2000%20Release%20Info.rtf">
+				<span class="style1">Release notes</span></a></span></td>
+			</tr>
+			<tr>
+				<td class="style29">Windows 98/ME</td>
+				<td class="style29">2005-12-21</td>
+				<td class="style31"><a href="https://www.ftdichip.com/Drivers/D2XX/Win98/D30104.zip">
+				<span class="style1">3.01.04</span></a></td>
+				<td class="style32">-</td>
+				<td class="style29">-</td>
+				<td class="style29" style="width: 181px">-</td>
+				<td class="style29" style="width: 145px">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+
+				<td class="style29" style="width: 43px">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="style29">Linux</td>
+				<td class="style29">2009-05-14</td>
+				<td class="style31"><a href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx0.4.16.tar.gz">
+				<span class="style1">0.4.16</span></a></td>
+				<td class="style29">
+				<span class="style30">
+				<a href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx0.4.16_x86_64.tar.gz">
+				<span class="style1">0.4.16</span></a></span></td>
+				<td class="style29">-</td>
+				<td class="style29" style="width: 181px">-</td>
+				<td class="style29" style="width: 145px">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+
+				<td class="style31" style="width: 43px"><a href="https://www.ftdichip.com/Drivers/D2XX/Linux/README.dat">
+				<span class="style1">ReadMe</span></a></td>
+        	</tr>
+        	<tr>
+				<td class="style29">Linux</td>
+				<td class="style29">20<span lang="en-sg">15</span>-0<span lang="en-sg">8</span>-21</td>
+        <td class="style31"><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-i386-1.3.6.tgz">1.3.6</a></td>
+				<td class="style29">
+				<span class="style30">
+				<a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-x86_64-1.3.6.tgz">1.3.6</a></span></td>
+				<td class="style29">-</td>
+				<td class="style29" style="width: 181px"><p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v5-sf-1.3.6.tgz">1.3.6 ARMv5 soft-float</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-uclibc-1.3.6.tgz">1.3.6 ARMv5 soft-float uClibc</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v6-hf-1.3.6.tgz">1.3.6 ARMv6 hard-float</a> (suits Raspberry Pi)</p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-arm-v7-hf-1.3.6.tgz">1.3.6 ARMv7 hard-float</a></p>
+</td>
+				<td class="style29" style="width: 145px"><p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-mips-eglibc-sf-1.3.6.tgz">1.3.6 MIPS32 soft-float</a></p>
+                  <p><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx-mips-eglibc-hf-1.3.6.tgz">1.3.6 MIPS32 hard-float</a></p>
+</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+
+				
+
+				<td class="style31">If unsure which ARM version to use, compare the output of <tt>readelf</tt> 
+                  and <tt>file</tt> commands on a system binary with the content of
+                  release/build/libftd2xx.txt in each package.<br>
+                  <a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/Linux/ReadMe-linux.txt" target="_blank">ReadMe</a></td>
+        	</tr>
+
+        <tr>
+				<td class="style29">
+				Mac OS X</td>
+				<td class="style29">2009-10-23</td>
+				<td class="style31"><a href="https://www.ftdichip.com/Drivers/D2XX/MacOSX/UniBin/D2XX0.1.7.dmg">
+				<span class="style1">0.1.7</span></a></td>
+				<td class="style29"><span lang="EN-GB"><font size="2"><a href="https://www.ftdichip.com/Drivers/D2XX/MacOSX/UniBin/D2XX0.1.7.dmg"><span class="style1">
+				0.1.7</span></a></font></span></td>
+				<td class="style29"><a href="https://www.ftdichip.com/Drivers/D2XX/MacOSX/D2XX1.2.2.dmg"><span class="style1">1.2.2</span></a></td>
+				<td class="style29" style="width: 181px">-</td>
+				<td class="style29" style="width: 145px">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+
+				<td class="style29">Requires Mac OS X 10.3 (Panther) or later</td>
+        	</tr>
+			<tr>
+				<td class="style29">Android (D2XX)</td>
+				<td class="style29">2011-09-11</td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29" style="width: 181px"><a class="style1" href="https://www.ftdichip.com/Drivers/D2XX/D2XXSample/D2XXSample.zip" target="_blank">BETA</a></td>
+				<td class="style29" style="width: 145px">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+				<td class="style29">&nbsp;</td>
+
+				<td class="style29"><br>
+                Rooting of Android device is required.<br>
+                Refer to technical note&nbsp;<a class="style1" href="https://www.ftdichip.com/Support/Documents/TechnicalNotes/TN_134_FTDI_Android_D2XX_Driver.pdf" target="_blank">TN_134</a></td>
+			</tr>
+			<tr>
+				<td class="style29">Android (Java D2XX)</td>
+				<td class="style29">2015-10-21</td>
+				<td class="style31">-</td>
+				<td class="style32">-</td>
+				<td class="style29">-</td>
+				<td class="style29" style="width: 181px"><a href="https://www.ftdichip.com/Drivers/D2XX/Android_Java_D2xx_2.03.zip"><span class="style1">Java Driver</span></a><br>2.03.00.000</td>
+				<td class="style29" style="width: 145px">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+				<td class="style29">-</td>
+
+				<td class="style29" style="width: 43px">&nbsp;</td>
+			</tr>
+			</tbody></table>
+
+		
+	</span></span></span></span></span></td>
+  </tr>
+   
+  </tbody></table>
+
+</div>
+<!-- Finish -->
+	</td>
+  </tr>
+   
+  <tr> 
+	<td height="50" align="left" valign="top" style="font-family: Arial; font-size: 10pt; text-align: left; text-indent: 0; word-spacing: 0; line-height: 150%; margin: 0">
+        <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p></td>
+  </tr>
+   
+  </tbody></table>
+</div>
+<!-- Finish -->
+	</td>
+  </tr>
+</tbody></table>
+<div align="left">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+    <tbody><tr>
+      <td width="175">
+      <p align="center"><br>
+      <br>
+      &nbsp;</p></td>
+      <td>
+      <p align="center">
+<span style="font-size: 10.0pt; font-family: Arial; color: navy">© Future Technology Devices International Ltd. </span></p></td>
+    </tr>
+  </tbody></table>
+</div>
+<br>
+<div align="center">&nbsp;</div>
+
+
+</body></html>

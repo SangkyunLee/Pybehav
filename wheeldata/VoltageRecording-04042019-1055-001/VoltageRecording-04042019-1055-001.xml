@@ -1,0 +1,6 @@
+﻿<PVScan version="5.4.64.100" date="4/4/2019 11:31:04 AM" notes="">
+  <Sequence type="VoltageRecording" cycle="1" time="11:31:04.1133241">
+    <VoltageRecording name="Anna_Ryan_contrasts" triggerMode="None" cycle="1" index="1" configurationFile="VoltageRecording-04042019-1055-001_Cycle00001_VoltageRecording_001.xml" dataFile="VoltageRecording-04042019-1055-001_Cycle00001_VoltageRecording_001.csv" relativeTime="0" absoluteTime="0" />
+    <VoltageOutput name="Current" triggerMode="None" filename="VoltageRecording-04042019-1055-001_Cycle00001_VoltageOutput_001.xml" relativeTime="0" absoluteTime="0" />
+  </Sequence>
+</PVScan>

@@ -1,0 +1,33 @@
+DEBUG:root:DAQthreader_ch(0, 1): counter:37, nsample:686, abstime:4823
+DEBUG:root:DIO_interrupt_counter:0
+DEBUG:root:DAQthreader_ch(0, 1): counter:38, nsample:549, abstime:4925
+DEBUG:root:DIO_interrupt_counter:0
+DEBUG:root:DAQthreader_ch(0, 1): counter:39, nsample:550, abstime:5026
+DEBUG:root:DIO_interrupt_counter:0
+Backend terminated (returncode: -11)
+Fatal Python error: Segmentation fault
+
+Current thread 0x75217470 (most recent call first):
+  File "/home/pi/dev/Pybehav/mcc_dio.py", line 101 in interrupt_callback
+  File "/usr/local/lib/python3.5/dist-packages/daqhats/hats.py", line 101 in handle_callback
+  File "/usr/local/lib/python3.5/dist-packages/daqhats/hats.py", line 91 in func
+
+Thread 0x738ff470 (most recent call first):
+  File "/home/pi/dev/Pybehav/Ext_trigger.py", line 123 in wait_delaytime
+  File "/home/pi/dev/Pybehav/Ext_trigger.py", line 156 in gen_vstimTRG
+  File "/home/pi/dev/Pybehav/Threadworker.py", line 37 in run
+  File "/usr/lib/python3.5/threading.py", line 914 in _bootstrap_inner
+  File "/usr/lib/python3.5/threading.py", line 882 in _bootstrap
+
+Thread 0x74a17470 (most recent call first):
+  File "/home/pi/dev/Pybehav/Daq.py", line 125 in record_cont
+  File "/home/pi/dev/Pybehav/Daq.py", line 204 in acq_start
+  File "/home/pi/dev/Pybehav/Threadworker.py", line 37 in run
+  File "/usr/lib/python3.5/threading.py", line 914 in _bootstrap_inner
+  File "/usr/lib/python3.5/threading.py", line 882 in _bootstrap
+
+Thread 0x76fa7010 (most recent call first):
+  File "/usr/lib/python3/dist-packages/thonny/backend.py", line 882 in _fetch_command
+  File "/usr/lib/python3/dist-packages/thonny/backend.py", line 156 in mainloop
+  File "/usr/lib/python3/dist-packages/thonny/backend_launcher.py", line 70 in <module>
+Use 'Stop/Restart' to restart the backend ...

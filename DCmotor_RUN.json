@@ -1,0 +1,50 @@
+{
+    "daqparam": {
+        "dev_id": "Dev3",
+        "mode": "finite",
+        "ai_ch": [
+            0,
+            1
+        ],
+        "ai_feedback_ch": 0,
+        "ao_ch": 0,
+        "scan_rate": 5000,
+        "acq_dur": 500
+    },
+    "speed_to_volt": {
+        "a": 0.0029023889206376274,
+        "b": 2.3082222344422263,
+        "speed_max": 140
+    },
+    "wheel_radius": 8,
+    "speedlist": [
+        [
+            10,
+            20
+        ],
+        [
+            20,
+            30
+        ],
+        [
+            30,
+            40
+        ]
+    ],
+    "dur": [
+        [
+            10,
+            0
+        ],
+        [
+            10,
+            0
+        ],
+        [
+            10,
+            0
+        ]
+    ],
+    "prerotdur": 20,
+    "postrotdur": 10
+}

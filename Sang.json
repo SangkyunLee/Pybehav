@@ -1,0 +1,42 @@
+{
+    "dioparam": {
+        "di_ch": 0,
+        "do_ch": [
+            6,
+            7
+        ]
+    },
+    "daqparam": {
+        "ai_ch": [
+            0,
+            1
+        ],
+        "scan_rate": 5000,
+        "mode": "continuous",
+        "timeout": 5,
+        "acq_dur": 0.2
+    },
+    "vstimparam": {
+        "target_dir": "/home/pi/dev/Pybehav/test/StimulationData/SANG",
+        "stim_clsname": "GratingExperiment_TRG",
+        "stimcond": "orientation",
+        "target_stimcond": 0
+    },
+    "elecparam": {
+        "delaytime": 1,
+        "elecstim_trigger_ch": 7,
+        "pulsedur": 0.5
+    },
+    "trparam": {
+        "Ntrial": 100,
+        "nframe_delay": 10,
+        "nframe_pretrial": 10,
+        "nframe_trial": 50,
+        "wheel_ch": [
+            0,
+            1
+        ],
+        "Whspeedthr": 10,
+        "vstim_trigger_ch": 6
+    }
+}
