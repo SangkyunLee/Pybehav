@@ -8,8 +8,7 @@ import nidaqmx.system
 import nidaqmx.errors
 
 import logging
-#from mcc_daq import *
-from Daq import *
+from mcc_daq import *
 import datetime
 
 
@@ -36,8 +35,6 @@ class usb6009(DAQ):
     
     def __init__(self, params):
         #super(usb6009, self).__init__(params)
-        
-        # for python 2.7
         DAQ.__init__(self,params)
         self.device_name = 'USB-6009'
         try:            
@@ -431,9 +428,9 @@ class dc_motor_control:
         sleep(postrotdur)    
         self.daq.acq_stop()
     
-    def rotate_motor_ramp(self,  speedlist, durlist,nstep=50,prerotdur=20, postrotdur = 10):
+    def rotate_motor_ramp(self,  speedlist, durlist,prerotdur=20, postrotdur = 10,nstep=100):
         """
-        def rotate_motor_ramp(self,  speedlist, durlist,nstep=20,prerotdur=20, postrotdur = 10):
+        def rotate_motor_ramp(self,  speedlist, durlist,prerotdur=20, postrotdur = 10,nstep=100):
             
             
             durlist = [[blocklen, intblocklen],[blocklen, intblocklen]]
@@ -444,7 +441,7 @@ class dc_motor_control:
                                                 
             
         """
-   
+   		
         stop_volt = self.convert_speed_volt(0) 
         
         self.daq.acq_resume()
@@ -452,19 +449,19 @@ class dc_motor_control:
         self.daq.write_volt([stop_volt])        
         sleep(prerotdur)
         for spd,dur in zip(speedlist,durlist):
-            spd1 = spd[0]
-            spd2 = spd[1]
-            block_dur = dur[0]        
-            intblock_dur = dur[1]
+            spd1 = float(spd[0])
+            spd2 = float(spd[1])
+            block_dur = float(dur[0])        
+            intblock_dur = float(dur[1])
    
-            stepsize = (spd2-spd1)/nstep
+            stepsize = float((spd2-spd1)/nstep)
             bindur = block_dur/(nstep+1)
             for i in range(nstep+1):
                 spdbin = spd1+i*stepsize                                
                 volt = self.convert_speed_volt(spdbin)
                 self.daq.write_volt([volt])
                 sleep(bindur)           
-                print('{}:{},'.format(spdbin,bindur))
+                print('SPblock{},{};{}:{},stepsize:{}'.format(spd1,spd2,spdbin,bindur,stepsize))
                 
             if intblock_dur>0:
                 self.daq.write_volt([stop_volt])
@@ -485,14 +482,12 @@ def main():
     if sys.argv[1] == 'Cal':
         # Meausre of speed to volt
         logging.info('Calibration mode')
-        envfile ='DCmotor_Cal2.json'
+        envfile ='DCmotor_Cal.json'
         with open(envfile) as envf:
             params=json.load(envf)       
         dc = dc_motor_control(params)
         #volt_list =np.arange(2.32,2.8,0.02)
         #volt_list =[2.32, 2.4]#np.arange(2.32,2.4,0.02)
-        #volt_list = np.arange(2.28,1.8,-0.02)
-        
         volt_list = params['volt_list']
         #stopvolt = 2.3
         stopvolt = params['stop_volt']
@@ -511,9 +506,8 @@ def main():
         # Rotate motor
         logging.info('Run mode')
         envfile ='DCmotor_RUN.json'
-        x = datetime.datetime.now()
-        datfname = x.strftime("%X")
-        #file_name = './data/'+x.strftime("%Y%m%d/")+\
+        x = datetime.datetime.now()        
+        datfname = x.strftime("%y%m%d")+'_'+x.strftime("%X")        
         file_name = './data/'+datfname.replace(':','')+'.csv'
         
         
@@ -535,6 +529,7 @@ def main():
         dat1,t = dc.get_alldaqdata()    
         df = pd.DataFrame({'time':t[:], '0':dat1[0,:],'1':dat1[1,:]})            
         df.to_csv(file_name, sep=',')
+        print('Data are saved in '+file_name+'.\n')
     else:
         logging.error('{}: Not specified'.format(sys.argv[1]))
         
@@ -552,7 +547,7 @@ if __name__=='__main__':
         
     
 #import json
-#filename='DCmotor_Cal2.json'
+#filename='DCmotor_RUN.json'
 #
 #with open(filename,'wt') as envf:    
 #    j=json.dumps(params,indent=4)
