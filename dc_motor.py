@@ -8,7 +8,7 @@ import nidaqmx.system
 import nidaqmx.errors
 
 import logging
-from mcc_daq import *
+from Daq import *
 import datetime
 
 
@@ -26,8 +26,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-logging.basicConfig(level=logging.DEBUG)
-#logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 class usb6009(DAQ):
     """ NI USB-6009 DAQ: for analog input and output"""
@@ -44,7 +44,7 @@ class usb6009(DAQ):
                 self.trg_chan = params['ai_trg_ch']
                 self.trg_mode= params['trg_mode'] #'rising_edge' or 'falling_edge'
             
-            self.ao_chan = params['ao_ch']
+            self.ao_ch = params['ao_ch']
             self.acq_dur = params['acq_dur']
             self.ai_buffersize= 5100
             self.timeout =10
@@ -75,13 +75,16 @@ class usb6009(DAQ):
             self.task_ao = nidaqmx.Task()            
             self.task_ai = nidaqmx.Task()
             
-            ao_ch = self.get_channame('ao', self.ao_chan)
-            self.task_ao.ao_channels.add_ao_voltage_chan(ao_ch,min_val=0.0,max_val=5.0)
+            for i in self.ao_ch:
+                ao_ch = self.get_channame('ao', i)
+                self.task_ao.ao_channels.add_ao_voltage_chan(ao_ch,min_val=0.0,max_val=5.0)
+                logging.info('ao_ch{} added'.format(ao_ch))
             
             for i in self.ai_ch:
                 ai_ch = self.get_channame('ai', i)
                 self.task_ai.ai_channels.add_ai_voltage_chan(ai_ch)
-            
+                logging.info('ai_ch{} added'.format(ai_ch))
+            logging.info('\n')
             #ai_ch = self.get_channame('ai', self.ai_fdb_chan)
             #self.task_ai.ai_channels.add_ai_voltage_chan(ai_ch)            
             #trg_ch = self.get_channame('ai', self.trg_chan)                
@@ -243,11 +246,12 @@ class usb6009(DAQ):
         self.task_ai.stop()   
         self.task_ao.stop()   
         self.aiworker.stop()
+        logging.info("aiworker is stopped")
     
     def cleanup(self):
         self.aiworker.stop()
         self.aiworker_live = False
-        
+        logging.info("aiworker is cleaned up")
 
         
         
@@ -461,7 +465,7 @@ class dc_motor_control:
                 volt = self.convert_speed_volt(spdbin)
                 self.daq.write_volt([volt])
                 sleep(bindur)           
-                print('SPblock{},{};{}:{},stepsize:{}'.format(spd1,spd2,spdbin,bindur,stepsize))
+                logging.debug('SPblock{},{};{}:{},stepsize:{}'.format(spd1,spd2,spdbin,bindur,stepsize))
                 
             if intblock_dur>0:
                 self.daq.write_volt([stop_volt])
@@ -472,6 +476,28 @@ class dc_motor_control:
         
     def exit(self):
         self.daq.cleanup()
+        
+        
+        
+    
+def plot_daqsig(fname):
+    """
+    def plot_daqsig(fname):
+        To confirm whether the data were saved properly,
+        plot tseries of the data
+    """
+    
+    data = pd.read_csv(fname)
+    
+    t= data['time'].values
+    x1 =data['0'].values
+    x2 =data['1'].values
+    plt.figure()
+    plt.subplot(2,1,1)
+    plt.plot(t,x1)
+    plt.subplot(2,1,2)
+    plt.plot(t,x2)
+    plt.show()
     
         
         
@@ -530,6 +556,13 @@ def main():
         df = pd.DataFrame({'time':t[:], '0':dat1[0,:],'1':dat1[1,:]})            
         df.to_csv(file_name, sep=',')
         print('Data are saved in '+file_name+'.\n')
+        
+        plot_daqsig(file_name)
+        
+        
+        
+        
+        
     else:
         logging.error('{}: Not specified'.format(sys.argv[1]))
         
