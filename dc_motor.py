@@ -14,7 +14,7 @@ import datetime
 
 import json
 import sys
-from time import sleep
+from time import sleep,time
 from Timer import Timer
 from Threadworker import *
 import numpy as np
@@ -26,8 +26,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-#logging.basicConfig(level=logging.DEBUG)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.INFO)
 
 class usb6009(DAQ):
     """ NI USB-6009 DAQ: for analog input and output"""
@@ -138,7 +138,8 @@ class usb6009(DAQ):
             
             if not self.aiworker.running():
                 break
-                                 
+                
+            #try:                     
             data = self.task_ai.read(segment_size, self.timeout)         
             self.data_acqtime[self.acq_counter] = self.timer.elapsed_time()
             nsample = len(data[0]) #                 
@@ -165,6 +166,10 @@ class usb6009(DAQ):
             self.total_nsample_perchannel += nsample
             self.acq_counter +=1
             sleep(segdur*0.95)
+            
+            
+				
+            
         
     
     def wait_for_trigger(self):
@@ -211,10 +216,8 @@ class usb6009(DAQ):
             if self.aiworker.running():        
                 if self.mode == 'trigger':
                     self.wait_for_trigger()
-                self.task_ai.start()
-                self.record_N_sample()
-                
-            
+                self.task_ai.start()     
+                self.record_N_sample()                
             sleep(0.1)
             
     def acq_resume(self):
@@ -431,9 +434,9 @@ class dc_motor_control:
         sleep(postrotdur)    
         self.daq.acq_stop()
     
-    def rotate_motor_ramp(self,  speedlist, durlist,prerotdur=20, postrotdur = 10,nstep=100):
+    def rotate_motor_ramp(self,  speedlist, durlist,prerotdur=20, postrotdur = 10,bindur=0.1):
         """
-        def rotate_motor_ramp(self,  speedlist, durlist,prerotdur=20, postrotdur = 10,nstep=100):
+        def rotate_motor_ramp(self,  speedlist, durlist,prerotdur=20, postrotdur = 10,bindur=0.1):
             
             
             durlist = [[blocklen, intblocklen],[blocklen, intblocklen]]
@@ -447,28 +450,38 @@ class dc_motor_control:
    		
         stop_volt = self.convert_speed_volt(0) 
         
-        self.daq.acq_resume()
-        
-        self.daq.write_volt([stop_volt])        
-        sleep(prerotdur)
+        self.daq.acq_resume()        
+        self.daq.write_volt([stop_volt])                
+        sleep(prerotdur)        
         for spd,dur in zip(speedlist,durlist):
             spd1 = float(spd[0])
             spd2 = float(spd[1])
             block_dur = float(dur[0])        
             intblock_dur = float(dur[1])
-   
+            
+   			
+            nstep = int(block_dur/bindur) -1	
             stepsize = float((spd2-spd1)/nstep)
-            bindur = block_dur/(nstep+1)
+            
+            
+            t0 = time() # get current time stamp (second)
             for i in range(nstep+1):
+            	
                 spdbin = spd1+i*stepsize                                
                 volt = self.convert_speed_volt(spdbin)
-                self.daq.write_volt([volt])
-                sleep(bindur)           
-                logging.debug('SPblock{},{};{}:{},stepsize:{}'.format(spd1,spd2,spdbin,bindur,stepsize))
+                self.daq.write_volt([volt])                
+                logging.debug('SPblock: {},{}; {}:{},stepsize:{}'.format(spd1,spd2,spdbin,bindur,stepsize))                
+           
+                sleeptime = (bindur*float(i+1)+t0) - time()
+                if sleeptime<0:
+                	sleeptime=0
+                logging.debug('SPblock-sleep: {}-sleeptime:{}'.format(t0,sleeptime))
+                sleep(sleeptime) # adjusting the bin duration based on any delay           
                 
-            if intblock_dur>0:
-                self.daq.write_volt([stop_volt])
-                sleep(intblock_dur)
+            if intblock_dur>0:            	
+                self.daq.write_volt([stop_volt])             
+                sleeptime = t0+block_dur+intblock_dur -time()
+                sleep(sleeptime)
         self.daq.write_volt([stop_volt])
         sleep(postrotdur)    
         self.daq.acq_stop()
@@ -490,11 +503,11 @@ class dc_motor_control:
         tmp = self.get_paramset(inparam)
         for (key,value) in tmp.items():
             outparam[key]=value        
-        outparam['daqparam']=self.daq.get_paramset(inparam)
+        outparam['daqparam']=self.daq.get_paramset(inparam['daqparam'])
         
         
         with open(fname,'wt') as envf:    
-            j=json.dumps(params,indent=4)
+            j=json.dumps(outparam,indent=4)
             envf.write(j)          
         
         
@@ -593,13 +606,17 @@ def main():
         if 'randomize' in params and params['randomize']:
             speedlist,newinx = randomize(speedlist)
             dur = [dur[i] for i in newinx]
-            params[speedlist] = speedlist # to save parameters
-            params[dur] =dur
+            params['speedlist'] = speedlist # to save parameters
+            params['dur'] =dur
         
         # block design with steady speed
         #dc.rotate_motor_steady(speedlist,dur, prerotdur, postrotdur) 
         # block design with steady speed
-        dc.rotate_motor_ramp(speedlist,dur, prerotdur, postrotdur) 
+        try:
+        	dc.rotate_motor_ramp(speedlist,dur, prerotdur, postrotdur) 
+        except KeyboardInterrupt: 
+        	dc.exit()
+        
         
         dc.exit()
         
