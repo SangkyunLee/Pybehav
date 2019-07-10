@@ -20,7 +20,7 @@ from Threadworker import *
 import numpy as np
 from scipy import stats 
 import math
-
+import random
 #import pdb
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -165,11 +165,7 @@ class usb6009(DAQ):
             self.total_nsample_perchannel += nsample
             self.acq_counter +=1
             sleep(segdur*0.95)
-            
-            
         
-       
-            
     
     def wait_for_trigger(self):
         """
@@ -271,10 +267,13 @@ class dc_motor_control:
             else:
                 self.speed_to_volt ={}
             
-            self.wheel_rad = params['wheel_radius']
+            self.wheel_radius = params['wheel_radius']   
             
         except(KeyError, ValueError) as err:
             logging.error(err,exc_info=True)
+    
+    
+        
         
     def get_feedback_data(self):
         """def get_feedback_data(self):
@@ -383,13 +382,13 @@ class dc_motor_control:
             
         """
         
-        speed = norevpersec*2*math.pi*self.wheel_rad # in cm/second
+        speed = norevpersec*2*math.pi*self.wheel_radius # in cm/second
         a, b, r_value, p_value, std_err = stats.linregress(speed,volts)        
         plt.figure()
         plt.plot(speed,volts,'.')
         plt.plot(speed,speed*a+b)
         plt.show()
-        speed_to_volt = {'a':a,'b':b,'speed_max': 2*math.pi*revmax*self.wheel_rad}
+        speed_to_volt = {'a':a,'b':b,'speed_max': 2*math.pi*revmax*self.wheel_radius}
         
         self.speed_to_volt = speed_to_volt
         return speed_to_volt
@@ -474,10 +473,53 @@ class dc_motor_control:
         sleep(postrotdur)    
         self.daq.acq_stop()
         
+        
+        
     def exit(self):
         self.daq.cleanup()
         
         
+        
+    def saveparam(self, fname, inparam):
+        """
+        def saveparam(self, fname, inparam):
+            inparam: inputparam
+            
+        """
+        outparam = inparam
+        tmp = self.get_paramset(inparam)
+        for (key,value) in tmp.items():
+            outparam[key]=value        
+        outparam['daqparam']=self.daq.get_paramset(inparam)
+        
+        
+        with open(fname,'wt') as envf:    
+            j=json.dumps(params,indent=4)
+            envf.write(j)          
+        
+        
+        
+    def get_paramset(self,inparam):
+        """
+        def get_paramset(self,inparam):
+            list all parameters set by parameter inputs
+        """        
+        return {pn:getattr(self,pn) for pn in inparam if hasattr(self,pn)}   
+    
+    
+        
+        
+def randomize(seq):
+    """
+    def randomize(seq):
+        return seq, seqinx after randomizing
+    """
+    n = len(seq)
+    ix = list(range(n))
+    random.shuffle(ix)
+    
+    newseq = [seq[i] for i in ix]
+    return newseq,ix       
         
     
 def plot_daqsig(fname):
@@ -541,10 +583,19 @@ def main():
             params=json.load(envf)   
         dc = dc_motor_control(params)
         
-        speedlist = params['speedlist']
-        dur= params['dur'] # block length:20sec, interblock=0sec
         prerotdur=params['prerotdur']
         postrotdur =params['postrotdur']
+        
+        speedlist = params['speedlist']
+        dur= params['dur'] # block length:20sec, interblock=0sec
+        
+        
+        if 'randomize' in params and params['randomize']:
+            speedlist,newinx = randomize(speedlist)
+            dur = [dur[i] for i in newinx]
+            params[speedlist] = speedlist # to save parameters
+            params[dur] =dur
+        
         # block design with steady speed
         #dc.rotate_motor_steady(speedlist,dur, prerotdur, postrotdur) 
         # block design with steady speed
@@ -557,6 +608,9 @@ def main():
         df.to_csv(file_name, sep=',')
         print('Data are saved in '+file_name+'.\n')
         
+        
+        parfname = file_name.replace('.csv','.json')
+        dc.saveparam(parfname,params)
         plot_daqsig(file_name)
         
         

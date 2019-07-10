@@ -7,7 +7,9 @@
             1
         ],
         "ai_feedback_ch": 0,
-        "ao_ch": 0,
+        "ao_ch": [
+                0
+        ],
         "scan_rate": 5000,
         "acq_dur": 500
     },

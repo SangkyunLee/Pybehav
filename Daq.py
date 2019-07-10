@@ -81,3 +81,10 @@ class DAQ:
             acqusition stop
         """
         
+    def get_paramset(self,inparam):
+        """
+        def get_paramset(self,inparam):
+            list all parameters set by parameter inputs
+        """        
+        return {pn:getattr(self,pn) for pn in inparam if hasattr(self,pn)}        
+        
