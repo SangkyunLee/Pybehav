@@ -10,7 +10,7 @@ import nidaqmx.errors
 import logging
 from Daq import *
 import datetime
-
+from util import datutil
 
 import json
 import sys
@@ -21,6 +21,8 @@ import numpy as np
 from scipy import stats 
 import math
 import random
+
+
 #import pdb
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -293,7 +295,7 @@ class dc_motor_control:
         return dat, t
         
 
-    def write_voltseq(self, dur, volt_list,prestimdur=1, poststimdur = 5, stop_volt=2.3):        
+    def write_voltseq(self, dur, volt_list, stop_volt=2.3, prestimdur=0, poststimdur = 5):        
         
         block_dur = dur[0]        
         intblock_dur = dur[1]
@@ -520,8 +522,6 @@ class dc_motor_control:
         return {pn:getattr(self,pn) for pn in inparam if hasattr(self,pn)}   
     
     
-        
-        
 def randomize(seq):
     """
     def randomize(seq):
@@ -533,27 +533,8 @@ def randomize(seq):
     
     newseq = [seq[i] for i in ix]
     return newseq,ix       
-        
-    
-def plot_daqsig(fname):
-    """
-    def plot_daqsig(fname):
-        To confirm whether the data were saved properly,
-        plot tseries of the data
-    """
-    
-    data = pd.read_csv(fname)
-    
-    t= data['time'].values
-    x1 =data['0'].values
-    x2 =data['1'].values
-    plt.figure()
-    plt.subplot(2,1,1)
-    plt.plot(t,x1)
-    plt.subplot(2,1,2)
-    plt.plot(t,x2)
-    plt.show()
-    
+
+       
         
         
 def main():
@@ -628,7 +609,7 @@ def main():
         
         parfname = file_name.replace('.csv','.json')
         dc.saveparam(parfname,params)
-        plot_daqsig(file_name)
+        datutil.plot_daqsig(file_name,['0','1'])
         
         
         

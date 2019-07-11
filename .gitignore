@@ -26,3 +26,4 @@ $RECYCLE.BIN/
 
 ./ref
 ./data
+*.pyc

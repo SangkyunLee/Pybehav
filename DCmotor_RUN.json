@@ -47,5 +47,5 @@
     ],
     "prerotdur": 20,
     "postrotdur": 10,
-    "randomize": True
+    "randomize": true
 }
