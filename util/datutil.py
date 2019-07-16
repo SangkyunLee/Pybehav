@@ -8,14 +8,14 @@ import pandas as pd
 
 import logging
 import math
-import logging
+#import logging
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 
 
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
 
 
 class daqdat:
@@ -78,14 +78,36 @@ def cal_motorspeed(s, t, twin = 0.1, wheel_raidus=8, nocyc_per_revol = 699.2):
         ncyc= len(np.nonzero(np.diff(a)>0)[0])
         norevpersec = ncyc/twin/nocyc_per_revol 
         speed[i] = norevpersec*2*math.pi*wheel_radius # in cm/second
-    
-    plt.figure()
-    plt.plot(tstamps,speed)
-    
-    
+#    if not fignum:
+#        plt.figure()
+#    else:
+#        plt.figure(fignum)
+#    plt.plot(tstamps,speed)
+#    
+    return speed, tstamps
 
 
-
+def get_designspeed(t,params):
+    dur = params['dur']
+    spd = params['speedlist']
+    predur = params['prerotdur']
+    tdf = np.diff(t[:2])[0]
+    spd_tseries = np.zeros(t.shape)
+    st = predur
+    for i in range(len(spd)):
+        spdi = spd[i]
+        duri = dur[i]
+        et = st+duri[0] 
+        inx = np.nonzero(np.bitwise_and(t>=st, t<et))[0]
+        if spdi[0] == spdi[1]:
+            spd_tseries[inx] = spdi[0]
+        else:
+            sz =inx.size
+            spd_tseries[inx]=np.linspace(spdi[0],spdi[1],sz)
+        
+        #intblock
+        st = et+duri[1]+tdf
+    return spd_tseries
     
 
 
