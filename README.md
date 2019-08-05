@@ -1,5 +1,5 @@
-# Pybehav
-animal-behav via daq control
+# Pybehav(animal behavior control via daq control).
+
 This program support controcl NI-DAQ card to control dc-motor by voltage output in a time-locked manner
 To control NI-DAQ, specifically USB-6008 model, use dc_motor.py
 
